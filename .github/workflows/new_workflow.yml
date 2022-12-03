@@ -36,10 +36,8 @@ jobs:
     
     - name: Build.
       run: |
-        export GOPATH=$HOME/go/
-        export GOROOT=/usr/local/go
-        export PATH="$GOROOT/bin:$PATH"
-        export PATH="$PATH:$GOPATH/bin"
+        go mod init
+        go get -u github.com/gin-gonic/gin
         go build -v ./...
     
     - name: Test

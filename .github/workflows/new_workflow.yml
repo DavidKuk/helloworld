@@ -1,0 +1,40 @@
+on:
+  workflow_dispatch:
+    inputs:
+      Go_Version:
+        description: 'Set GO version'
+        required: true
+        default: '1.15'
+        type: choice
+        options:
+        - '1.15'
+        - '1.16'
+        - '1.17'
+
+jobs:
+  log-the-inputs:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checking out forked repository
+      uses: actions/checkout@v3
+
+    - name: Setup GO with ${{ inputs.Go_Version }} version
+      uses: actions/setup-go@v3
+      with:
+       go-version: ${{ inputs.Go_Version }}
+    
+    - name: Build.
+      run: go build -v ./...
+    
+    - name: Test
+      run: go test -v ./... -json > TestResults-${{ inputs.Go_Version }}.json
+      
+    - name: Run main.go
+      run: go run main.go
+
+    - name: Upload Go test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: Go-results-
+        path: TestResults-${{ inputs.Go_Version }}.json
+  

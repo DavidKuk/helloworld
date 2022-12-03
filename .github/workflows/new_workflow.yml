@@ -1,3 +1,6 @@
+
+name: Workflow that trigers from despatch event
+
 on:
   workflow_dispatch:
     inputs:
@@ -10,10 +13,18 @@ on:
         - '1.15'
         - '1.16'
         - '1.17'
-
+      OS:
+        description: 'Set Operating System'
+        required: true
+        default: 'ubuntu-latest'
+        type: choice
+        options:
+            - "windows-latest"
+            - "ubuntu-latest"
+            - "macos-latest"
 jobs:
   log-the-inputs:
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.OS }}
     steps:
     - name: Checking out forked repository
       uses: actions/checkout@v3

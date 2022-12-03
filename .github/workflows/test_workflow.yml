@@ -12,10 +12,10 @@ jobs:
     - name: Checking out forked repository
       uses: actions/checkout@v3
 
-    - name: Setup GO with 1.16.x version
+    - name: Setup GO with 1.16 version
       uses: actions/setup-go@v3
       with:
-       go-version: '1.16.x'
+       go-version: 1.16
     
     - name: Build.
       run: go build -v ./...

@@ -33,13 +33,9 @@ jobs:
       uses: actions/setup-go@v3
       with:
        go-version: ${{ inputs.Go_Version }}
-    
-    - name: Install dependencies
-      run: |
-        GO111MODULE=off go mod init
         
     - name: Build.
-      run: go build -v ./...
+      run: GO111MODULE=off go build -v ./...
     
     - name: Test
       run: go test -v ./... -json > TestResults-${{ inputs.Go_Version }}.json

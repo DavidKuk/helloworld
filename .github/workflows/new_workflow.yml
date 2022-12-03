@@ -36,10 +36,10 @@ jobs:
     
     - name: Install dependencies
       run: |
-        go mod tidy
-        go mod init dacode # valid, but..
-        go mod init github.com/syntaqx/dacode
- 
+        git init
+        git remote add origin https://github.com/syntaqx/dacode
+        go mod init
+        
     - name: Build.
       run: go build -v ./...
     

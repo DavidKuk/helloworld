@@ -36,8 +36,7 @@ jobs:
     
     - name: Install dependencies
       run: |
-        go get example.com/octo-examplemodule
-        go get example.com/octo-examplemodule@v1.3.4
+        go get ./...
     
     - name: Build.
       run: go build -v ./...

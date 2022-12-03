@@ -36,8 +36,9 @@ jobs:
     
     - name: Install dependencies
       run: |
-        go get ./...
-    
+        go mod init dacode # valid, but..
+        go mod init github.com/syntaqx/dacode
+ 
     - name: Build.
       run: go build -v ./...
     

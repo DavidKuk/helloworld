@@ -8,19 +8,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-go@v3
+ 
+    - name: Checking out forked repository
+      uses: actions/checkout@v3
+
+    - name: Setup GO with 1.16.x version
+      uses: actions/setup-go@v3
       with:
-       go-version: 1.15
+       go-version: '1.16.x'
+    
     - name: Build.
       run: go build -v ./...
-      
+    
     - name: Test
       run: go test -v ./...
       
     - name: Run main.go
       run: go run main.go
-
-
-      
-

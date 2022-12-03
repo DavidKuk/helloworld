@@ -35,7 +35,12 @@ jobs:
        go-version: ${{ inputs.Go_Version }}
     
     - name: Build.
-      run: go build -v ./...
+      run: |
+        export GOPATH=$HOME/go/
+        export GOROOT=/usr/local/go
+        export PATH="$GOROOT/bin:$PATH"
+        export PATH="$PATH:$GOPATH/bin"
+        go build -v ./...
     
     - name: Test
       run: go test -v ./... -json > TestResults-${{ inputs.Go_Version }}.json

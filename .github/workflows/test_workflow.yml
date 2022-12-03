@@ -4,6 +4,7 @@ on:
   push:
     branches:
      - 'master'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,7 +22,7 @@ jobs:
       run: go build -v ./...
     
     - name: Test
-      run: go test -v ./...
+      run: go test -v ./... -json > TestResults-1.15.json
       
     - name: Run main.go
       run: go run main.go
@@ -29,5 +30,5 @@ jobs:
     - name: Upload Go test results
       uses: actions/upload-artifact@v3
       with:
-        name: Go-results-${{ matrix.go-version }}
-        path: TestResults-${{ matrix.go-version }}.json
+        name: Go-results-1.15
+        path: TestResults-1.15.json

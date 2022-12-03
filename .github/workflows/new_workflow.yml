@@ -36,6 +36,7 @@ jobs:
     
     - name: Install dependencies
       run: |
+        go mod tidy
         go mod init dacode # valid, but..
         go mod init github.com/syntaqx/dacode
  

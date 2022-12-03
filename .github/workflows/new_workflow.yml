@@ -34,11 +34,11 @@ jobs:
       with:
        go-version: ${{ inputs.Go_Version }}
     
+    - name: Install dependencies
+      run: go get .
+    
     - name: Build.
-      run: |
-        go mod init
-        go get -u github.com/gin-gonic/gin
-        go build -v ./...
+      run: go build -v ./...
     
     - name: Test
       run: go test -v ./... -json > TestResults-${{ inputs.Go_Version }}.json

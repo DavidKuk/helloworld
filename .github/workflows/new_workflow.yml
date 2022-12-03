@@ -35,7 +35,10 @@ jobs:
        go-version: ${{ inputs.Go_Version }}
     
     - name: Install dependencies
-      run: go get .
+      run: |
+        go get .
+        go get example.com/octo-examplemodule
+        go get example.com/octo-examplemodule@v1.3.4
     
     - name: Build.
       run: go build -v ./...

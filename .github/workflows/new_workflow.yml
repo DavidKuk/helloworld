@@ -36,9 +36,7 @@ jobs:
     
     - name: Install dependencies
       run: |
-        git init
-        git remote add origin https://github.com/syntaqx/dacode
-        go mod init
+        GO111MODULE=off go mod init
         
     - name: Build.
       run: go build -v ./...

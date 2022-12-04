@@ -35,19 +35,20 @@ jobs:
        go-version: ${{ inputs.Go_Version }}
         
     - name: Build.
-      run: GO111MODULE=auto go build -v ./...
+      run: | 
+        export GO111MODULE=auto
+        go build -v ./...
     
     - name: Test
-      run: GO111MODULE=auto go test -v ./... -json > TestResults-${{ inputs.Go_Version }}.json
+      run: go test -v ./... -json > TestResults-${{ inputs.Go_Version }}.json
       
     - name: Run main.go
       run: |
         ls
-        GO111MODULE=auto go run main.go
+        go run main.go
 
     - name: Upload Go test results
       uses: actions/upload-artifact@v3
       with:
         name: Go-results
         path: TestResults-${{ inputs.Go_Version }}.json
-  

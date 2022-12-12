@@ -14,3 +14,5 @@ jobs:
           with:
             username: ${{ secrets.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        - name: Docker command
+          run: docker ps

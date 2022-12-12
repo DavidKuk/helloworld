@@ -25,10 +25,10 @@ jobs:
 
         - name: Build docker image
           run: |
-            sudo docker build --build-arg GOLANG_VERSION=$GO_VERSION -t $DOCKERHUB_USERNAME/helloworld:$GO_VERSION .
+            sudo docker build --build-arg GOLANG_VERSION=$GO_VERSION -t $DOCKERHUB_USERNAME/helloworld .
 
         - name: Push Docker image to DockerHub repository.
-          run: sudo docker push $DOCKERHUB_USERNAME/helloworld:$GO_VERSION
+          run: sudo docker push $DOCKERHUB_USERNAME/helloworld
 
 
  

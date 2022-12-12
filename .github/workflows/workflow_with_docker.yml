@@ -1,0 +1,16 @@
+name: CI/CD build go application and create docker image
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Login to DockerHub
+          uses: actions/docker-login@v2
+          with:
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_PASSWORD }}

@@ -26,10 +26,10 @@ jobs:
 
         - name: Build docker image
           run: |
-            sudo docker build --build-arg GOLANG_VERSION=$GO_VERSION -t $DOCKERHUB_USERNAME/helloworld .
+            sudo docker build --build-arg GOLANG_VERSION=$GO_VERSION -t davidkuk/helloworld .
 
         - name: Docker images
           run: docker images
 
         - name: Push Docker image to DockerHub repository.
-          run: sudo docker push --disable-content-trust $DOCKERHUB_USERNAME/helloworld
+          run: sudo docker push --disable-content-trust davidkuk/helloworld

@@ -20,6 +20,7 @@ jobs:
         - name: Login to DockerHub
           uses: docker/login-action@f75d088332b07a08afadf6ac53c74509b9453f12
           with:
+            registery: docker.io
             username: ${{ secrets.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
@@ -29,10 +30,6 @@ jobs:
 
         - name: Docker images
           run: docker images
-          
+
         - name: Push Docker image to DockerHub repository.
-          run: sudo docker push $DOCKERHUB_USERNAME/helloworld
-
-
- 
-
+          run: sudo docker push --disable-content-trust $DOCKERHUB_USERNAME/helloworld

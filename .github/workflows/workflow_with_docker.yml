@@ -13,7 +13,7 @@ jobs:
     build:
       runs-on: ubuntu-latest
       steps:
-      
+
         - name: Checking out repository
           uses: actions/checkout@v3
 
@@ -23,9 +23,11 @@ jobs:
             username: ${{ secrets.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-        - name: Build image that runs go application
-          run: sudo docker build --build-arg GOLANG_VERSION=$GO_VERSION -t $DOCKERHUB_USERNAME/helloworld .
+        - name: Build docker image and push it to DockerHub
+          run: |
+            sudo docker build --build-arg GOLANG_VERSION=$GO_VERSION -t $DOCKERHUB_USERNAME/helloworld_$GO_VERSION .
+            sudo docker push $DOCKERHUB_USERNAME/helloworld_$GO_VERSION
 
-        - name: List all docker images
-          run: docker images
+
+ 
 

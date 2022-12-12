@@ -26,10 +26,10 @@ jobs:
 
         - name: Build docker image
           run: |
-            docker build --build-arg GOLANG_VERSION=$GO_VERSION -t davidkuk/helloworld .
+            docker build --build-arg GOLANG_VERSION=$GO_VERSION -t $DOCKERHUB_USERNAME/helloworld:$GO_VERSION .
 
         - name: Docker images
           run: docker images
 
         - name: Push Docker image to DockerHub repository.
-          run: docker push davidkuk/helloworld
+          run: docker push $DOCKERHUB_USERNAME/helloworld:$GO_VERSION

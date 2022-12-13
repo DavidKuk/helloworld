@@ -5,7 +5,7 @@ on:
     branches:
       - "master"
 env:
-  GO_VERSION: "1.16"
+  GO_VERSION: "1.17"
   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
   DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
   # The value of STEP_TYPE should be 'using_cmd' or 'using_action'

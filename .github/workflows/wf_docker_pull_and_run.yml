@@ -10,13 +10,13 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       # The following step can be skipped.
       # If docker wouldn't find local image it pulls image from DockerHub 
       - name: Pull docker image.
         run:  docker pull $DOCKERHUB_REPO
-
+      # Run container and check exit code.
       - name: Run container with docker image.
         run:  |
           docker run $DOCKERHUB_REPO; exit_code=$?

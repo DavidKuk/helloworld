@@ -5,10 +5,17 @@ on:
   push:
     branches:
       - "master"
+env:
+  DOCKERHUB_REPO: "dockerid21656/go_image:0.1.0"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: "Docker command"
-        run: docker --version
+      # The following step can be skipped.
+      # If docker wouldn't find local image it pulls image from DockerHub.
+      - name: Pull docker image.
+        run:  docker pull $DOCKERHUB_REPO
+
+      - name: Run container with pulled docker image.
+        run:  docker run $DOCKERHUB_REPO

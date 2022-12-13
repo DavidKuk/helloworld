@@ -28,18 +28,18 @@ jobs:
             password: ${{ env.DOCKERHUB_PASSWORD }}
 
         # Build image and push using docker commands.
-          if: ${{ env.STEP_TYPE }} == "using_cmd"
+          if: ${{ env.STEP_TYPE == 'using_cmd'}}
         - name: Build docker image and push to DockerHub
           run: |
            docker build --build-arg GOLANG_VERSION=$GO_VERSION -t $DOCKERHUB_USERNAME/helloworld:$GO_VERSION .
            docker push $DOCKERHUB_USERNAME/helloworld:$GO_VERSION
         
         # Another way to build and push docker image using actions from Github MP.
-          if: ${{ env.STEP_TYPE }} == "using_action"
+          if: ${{ env.STEP_TYPE == 'using_action' }}
         - name: Setup Docker Buildx
           uses: docker/setup-buildx-action@v2
 
-          if: ${{ env.STEP_TYPE }} == "using_action"
+          if: ${{ env.STEP_TYPE == 'using_action' }}
         - name: Build and push docker image to DockerHub
           uses: docker/build-push-action@v3
           with:

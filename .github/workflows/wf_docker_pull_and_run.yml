@@ -1,5 +1,5 @@
 # docker image repository -> dockerid21656/go_image:0.1.0
-name: Workflow that pulls docker image and runs it
+name: Workflow that pulls docker image and runs it.
 
 on:
   push:

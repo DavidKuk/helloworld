@@ -21,8 +21,8 @@ jobs:
           uses: docker/login-action@f75d088332b07a08afadf6ac53c74509b9453f12
           with:
             registry: docker.io
-            username: ${{ DOCKERHUB_USERNAME }}
-            password: ${{ DOCKERHUB_PASSWORD }}
+            username: ${{ env.DOCKERHUB_USERNAME }}
+            password: ${{ env.DOCKERHUB_PASSWORD }}
 
         - name: Build docker image
           run: |

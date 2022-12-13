@@ -8,8 +8,8 @@ env:
   GO_VERSION: "1.16"
   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
   DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-  # The value of STEP_TYPE can be using_cmd or using_action
-  # If using_action then use github actions from MP, otherwise use docker commands
+  # The value of STEP_TYPE should be 'using_cmd' or 'using_action'
+  # If value is 'using_action' then use github actions from MP, otherwise use docker commands
   STEP_TYPE: "using_cmd" 
 
 jobs:
@@ -29,7 +29,7 @@ jobs:
 
         # Build image and push using docker commands.
           if: ${{ env.STEP_TYPE == 'using_cmd'}}
-        - name: Build docker image and push to DockerHub
+        - name: Build docker image and push to DockerHub using docker commands.
           run: |
            docker build --build-arg GOLANG_VERSION=$GO_VERSION -t $DOCKERHUB_USERNAME/helloworld:$GO_VERSION .
            docker push $DOCKERHUB_USERNAME/helloworld:$GO_VERSION

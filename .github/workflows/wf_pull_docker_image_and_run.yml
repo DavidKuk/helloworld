@@ -14,8 +14,8 @@ jobs:
     steps:
       # The following step can be skipped.
       # If docker wouldn't find local image it pulls image from DockerHub.
-      - name: Pull '${DOCKERHUB_REPO}' docker image.
+      - name: Pull $DOCKERHUB_REPO docker image.
         run:  docker pull $DOCKERHUB_REPO
 
-      - name: Run container with '${DOCKERHUB_REPO}' docker image.
+      - name: Run container with $DOCKERHUB_REPO docker image.
         run:  docker run $DOCKERHUB_REPO

@@ -24,9 +24,20 @@ jobs:
             username: ${{ env.DOCKERHUB_USERNAME }}
             password: ${{ env.DOCKERHUB_PASSWORD }}
 
-        - name: Build docker image
-          run: |
-            docker build --build-arg GOLANG_VERSION=$GO_VERSION -t $DOCKERHUB_USERNAME/helloworld:$GO_VERSION .
+ #       - name: Build docker image
+ #         run: |
+ #          docker build --build-arg GOLANG_VERSION=$GO_VERSION -t $DOCKERHUB_USERNAME/helloworld:$GO_VERSION .
+ #
+ #       - name: Push Docker image to DockerHub.
+ #         run: docker push $DOCKERHUB_USERNAME/helloworld:$GO_VERSION
 
-        - name: Push Docker image to DockerHub.
-          run: docker push $DOCKERHUB_USERNAME/helloworld:$GO_VERSION
+        # Another way to build and push docker image using actions from Github MP.
+        - name: Setup Docker Buildx
+          uses: docker/setupbuildx-action@v2
+
+        - name: Build and push docker image to DockerHub
+          uses: docker/build-push-action@v3
+          with:
+            push: true
+            tags: ${{ env.DOCKERHUB_USERNAME }}/helloworld:${{ env.GO_VERSION }}
+            build-args: "GOLANG_VERSION=${{ env.GO_VERSION }}"

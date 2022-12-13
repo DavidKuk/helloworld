@@ -1,0 +1,14 @@
+# docker image repository -> dockerid21656/go_image:0.1.0
+name: Workflow that pulls docker image and runs it
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Docker command"
+        run: docker --version

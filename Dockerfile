@@ -4,8 +4,8 @@ FROM $OS_VER
 ARG GOLANG_VERSION
 ARG OS_VER
 RUN apt update && apt install -y curl && apt install -y git
-RUN /bin/bash -c "curl -LO https://go.dev/dl/go${GOLANG_VERSION}beta1.linux-amd64.tar.gz" && \
-    /bin/bash -c "tar -C /usr/local -xzf go${GOLANG_VERSION}beta1.linux-amd64.tar.gz" 
+RUN curl -LO https://go.dev/dl/go${GOLANG_VERSION}beta1.linux-amd64.tar.gz && \
+    tar -C /usr/local -xzf go${GOLANG_VERSION}beta1.linux-amd64.tar.gz
 ENV GOROOT=/usr/local/go 
 ENV GOPATH=${HOME}/go
 ENV PATH=${GOPATH}/bin:${GOROOT}/bin:${PATH} 

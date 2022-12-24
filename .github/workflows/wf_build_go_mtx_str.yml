@@ -36,7 +36,7 @@ jobs:
         push: true
         tags: ${{ env.DOCKERHUB_USERNAME }}/helloworld:${{ matrix.version }}_${{ env.GO_VERSION }}
         build-args: |
-              "GOLANG_VERSION=${{ matrix.version }}"
+              "GOLANG_VERSION=${{ matrix.go_version }}"
               "OS_VER=ubuntu:22.04"
       
     - name: Build and push docker image to DockerHub using action from GitHub MP.
@@ -45,5 +45,6 @@ jobs:
       with:
         push: true
         tags: ${{ env.DOCKERHUB_USERNAME }}/helloworld:${{ matrix.version }}_${{ env.GO_VERSION }}
-#        build-args: "GOLANG_VERSION=${{ matrix.version }}"
-#              "OS_VER=ubuntu:20.04"
+        build-args: |
+              "GOLANG_VERSION=${{ matrix.go_version }}"
+              "OS_VER=ubuntu:20.04"

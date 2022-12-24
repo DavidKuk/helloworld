@@ -1,6 +1,6 @@
 ARG GOLANG_VERSION="1.15"
-ARG OS="ubuntu:20.04"
-FROM $OS
+ARG OS_VER="ubuntu:20.04"
+FROM $OS_VER
 ARG GOLANG_VERSION
 ARG OS
 RUN apt update && apt install -y curl && apt install -y git

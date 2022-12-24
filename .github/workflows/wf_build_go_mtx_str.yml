@@ -37,7 +37,7 @@ jobs:
         tags: ${{ env.DOCKERHUB_USERNAME }}/helloworld:${{ matrix.version }}_${{ env.GO_VERSION }}
         build-args: |
               "GOLANG_VERSION=${{ matrix.version }}"
-              "OS=ubuntu:22.04"
+              "OS_VER=ubuntu:22.04"
       
     - name: Build and push docker image to DockerHub using action from GitHub MP.
       if: ${{ matrix.os == 'ubuntu-20.04' }}
@@ -47,4 +47,4 @@ jobs:
         tags: ${{ env.DOCKERHUB_USERNAME }}/helloworld:${{ matrix.version }}_${{ env.GO_VERSION }}
         build-args: |
               "GOLANG_VERSION=${{ matrix.version }}"
-              "OS=ubuntu-20.04"
+              "OS_VER=ubuntu:20.04"

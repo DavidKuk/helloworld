@@ -3,7 +3,8 @@ name: Workflow that builds and pushes built docker image to DockerHub.
 on:
   push:
     branches:
-      - "master"
+    #  - "master"
+      - "main"
 env:
   GO_VERSION: "1.17"
   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}

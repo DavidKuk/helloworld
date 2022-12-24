@@ -34,7 +34,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ${{ env.DOCKERHUB_USERNAME }}/helloworld:${{ matrix.version }}_${{ env.GO_VERSION }}
+        tags: ${{ env.DOCKERHUB_USERNAME }}/helloworld:${{ matrix.os }}_${{ matrix.go_version }}
         build-args: |
               "GOLANG_VERSION=${{ matrix.go_version }}"
               "OS_VER=ubuntu:22.04"
@@ -44,7 +44,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ${{ env.DOCKERHUB_USERNAME }}/helloworld:${{ matrix.version }}_${{ env.GO_VERSION }}
+        tags: ${{ env.DOCKERHUB_USERNAME }}/helloworld:${{ matrix.os }}_${{ matrix.go_version }}
         build-args: |
               "GOLANG_VERSION=${{ matrix.go_version }}"
               "OS_VER=ubuntu:20.04"

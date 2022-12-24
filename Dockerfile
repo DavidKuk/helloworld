@@ -2,7 +2,7 @@ ARG GOLANG_VERSION="1.15"
 ARG OS_VER="ubuntu:20.04"
 FROM $OS_VER
 ARG GOLANG_VERSION
-ARG OS
+ARG OS_VER
 RUN apt update && apt install -y curl && apt install -y git
 RUN curl -LO https://go.dev/dl/go${GOLANG_VERSION}beta1.linux-amd64.tar.gz && \
     tar -C /usr/local -xzf go${GOLANG_VERSION}beta1.linux-amd64.tar.gz 
